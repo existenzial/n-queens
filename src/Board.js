@@ -78,13 +78,37 @@
     // --------------------------------------------------------------
     //
     // test if a specific row on this board contains a conflict
+
     hasRowConflictAt: function(rowIndex) {
-      return false; // fixme
+      var row = this.attributes[rowIndex];
+      var pieceCount = 0;
+        for(var j = 0; j < row.length; j++){
+          if(row[j] === 1){
+        // console.log('this attributes row', this.attributes);
+            pieceCount++;
+          }
+        }      
+      if (pieceCount > 1){
+        return true;
+      } else {
+        return false; 
+     }
+// fixme
     },
+            //then return true, b/c a conflict exists
+            //If theres more than one piece. Greater than one.
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      return false; // fixme
+      for(var key in this.attributes){
+        if(this.hasRowConflictAt(key)){
+          return true;
+        }
+      }
+      // console.log('this attributes', this.attributes);
+        return false; // fixme        
+      
+
     },
 
 
@@ -94,6 +118,7 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
+      this.colIndex
       return false; // fixme
     },
 
@@ -114,14 +139,11 @@
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
-      return false; // fixme
-    },
-
-
-
+      return false;
     // Minor Diagonals - go from top-right to bottom-left
     // --------------------------------------------------------------
     //
+    },
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
       return false; // fixme
@@ -138,8 +160,10 @@
   });
 
   var makeEmptyMatrix = function(n) {
-    return _(_.range(n)).map(function() {
-      return _(_.range(n)).map(function() {
+    //makeEmptyMatrix is a function that takes in a number
+    return _(_.range(n)).map(function() {//rows
+    //It returns the value of generating a range of numbers from the 'n' paramater. Returns an array of results of the functions running on each element in the array.
+      return _(_.range(n)).map(function() {//pieces
         return 0;
       });
     });
