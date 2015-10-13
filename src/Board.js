@@ -158,6 +158,14 @@
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
+      //Takes in a column index at first row start. x + 1, y - 1.
+      //Create function that takes in 2 parameters. x(row) and y(column). 
+        // The x will move to the next higher index and y will descend from the new 
+        //position starting from the passed in index: 
+        //majorDiagonalColumnIndexAtFirstRow.
+        //Save diagonal positions
+        //Check new position for value of 1. 
+      //Return true or false
       return false; // fixme
     },
 
