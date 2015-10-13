@@ -100,8 +100,8 @@
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      for(var key in this.attributes){
-        if(this.hasRowConflictAt(key)){
+      for(var prop in this.attributes){
+        if(this.hasRowConflictAt(prop)){
           return true;
         }
       }
@@ -119,14 +119,14 @@
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
       var pieceCount = 0;
+      //for each row check the value at the input column index
       for(var key in this.attributes){
-        for(var i = 0; i < this.attributes[key].length; i++){
-          var column = this.attributes[key][colIndex];
-          if(column === 1){
-            pieceCount++;
-          }
+        var column = this.attributes[key][colIndex];
+        if(column === 1){
+          pieceCount++;
         }
       }
+      
       if(pieceCount > 1){
         return true;
       } else {
