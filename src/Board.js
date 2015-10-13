@@ -158,6 +158,23 @@
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
+      var pieceCount = 0;
+      for (var row in this.attributes){
+        for (var col = 0; col < this.attributes[row].length; col++){
+          var majorDiagonal = this.attributes[row][majorDiagonalColumnIndexAtFirstRow];
+          var majorColumn = this.attributes[col];
+          console.log('major',majorDiagonal, 'column', majorColumn);
+          if (majorDiagonal === 1){
+            pieceCount++;
+          }
+        }
+      }
+      if (pieceCount > 1){
+        return true;
+      } else {
+        return false;
+      }
+    },
       //Takes in a column index at first row start. x + 1, y - 1.
       //Create function that takes in 2 parameters. x(row) and y(column). 
         // The x will move to the next higher index and y will descend from the new 
@@ -166,16 +183,27 @@
         //Save diagonal positions
         //Check new position for value of 1. 
       //Return true or false
-      return false; // fixme
-    },
 
     // test if any major diagonals on this board contain conflicts
+      //create an empty array
+      //loop through the board object keys(this.attributes[key])
+        //loop through each row to access each square
+          //if the value is not 0(there's a piece)
+            //then push the row - column value(which should be 1 every time) to the empty array
+            //if the value of running _.uniq on the array
     hasAnyMajorDiagonalConflicts: function() {
-      return false;
+      for(var row in this.attributes){
+        if(this.hasMajorDiagonalConflictAt(row)){
+          return true;
+        } else {
+        return false;        
+        }
+      }
+    },
+
     // Minor Diagonals - go from top-right to bottom-left
     // --------------------------------------------------------------
     //
-    },
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
       return false; // fixme
