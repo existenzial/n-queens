@@ -159,46 +159,57 @@
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
       var pieceCount = 0;
-      for (var row in this.attributes){
-        for (var col = 0; col < this.attributes[row].length; col++){
-          var majorDiagonal = this.attributes[row][majorDiagonalColumnIndexAtFirstRow];
-          var majorColumn = this.attributes[col];
-          console.log('major',majorDiagonal, 'column', majorColumn);
-          if (majorDiagonal === 1){
-            pieceCount++;
-          }
-        }
-      }
-      if (pieceCount > 1){
-        return true;
-      } else {
-        return false;
-      }
-    },
-      //Takes in a column index at first row start. x + 1, y - 1.
-      //Create function that takes in 2 parameters. x(row) and y(column). 
-        // The x will move to the next higher index and y will descend from the new 
-        //position starting from the passed in index: 
-        //majorDiagonalColumnIndexAtFirstRow.
-        //Save diagonal positions
-        //Check new position for value of 1. 
-      //Return true or false
+      //declare a variable to count pieces in a row
+    
+      
+      //loop through the object's keys to get access to each row
+      //changed col to majordiagonalcolumnindex from 0;
+      //changed for var in attributes to a iteration by integer count. 
+        for (var col = majorDiagonalColumnIndexAtFirstRow, row = 0; col < this.attributes.n, row < this.attributes.n; col++, row++){
+          debugger;
+          if (this.attributes[row][col] === 1) {
+            debugger;
+            pieceCount++;            
 
-    // test if any major diagonals on this board contain conflicts
-      //create an empty array
-      //loop through the board object keys(this.attributes[key])
-        //loop through each row to access each square
-          //if the value is not 0(there's a piece)
-            //then push the row - column value(which should be 1 every time) to the empty array
-            //if the value of running _.uniq on the array
-    hasAnyMajorDiagonalConflicts: function() {
-      for(var row in this.attributes){
-        if(this.hasMajorDiagonalConflictAt(row)){
+          }
+          // console.log('piece', attributes[row * 1 + 1][col + 1]);
+        //loop through each row to get access to each piece
+        //If the row index........next row index + 1 and if row-col = row-col.
+        //variable starting row. increase row and col
+        // var piece = row - col;
+        //   if(piece === piece){
+           
+        }
+        console.log('pieceCount: ', pieceCount);
+        if (pieceCount > 1){
           return true;
         } else {
-        return false;        
+          return false;
         }
+      },
+
+          
+          //add pieces that have a specific position(over 1, down 1) to a variable that defines the diagonal
+      
+
+    // test if any major diagonals on the board contain conflicts
+      //loop through the board object keys(this.attributes[row])
+        //loop through each row to access each square
+          //if the value is 1(there's a piece)
+            //if you find a piece, add it to the count
+      //if the pieceCount is greater than 1
+        //return true
+      //else
+        //return false
+
+    hasAnyMajorDiagonalConflicts: function() {
+      for(var i = -(this.attributes.n); i < this.attributes.n; i++){
+        debugger;
+        if(this.hasMajorDiagonalConflictAt(i)){
+          return true;
+        } 
       }
+      return false;
     },
 
     // Minor Diagonals - go from top-right to bottom-left
